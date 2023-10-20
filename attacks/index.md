@@ -71,3 +71,63 @@ Defense in depth - layered defense.
 Firewalls and IPS - stop the network traffic before things get bad
 
 E.g. a mallware is installed on deviced of people who belong to a certain group.
+
+## Spam
+
+Unsolicited messages - commercial advertising, malicious phishing.
+
+Issues with spam - security concernts, resource utilization, storage costs, managing it.
+
+SPIM - Spam over instant messaging
+
+Ways to stop spam:
+
+- Have your spam filter - filtering in the cloud or on site in a screened subnet. Mail coming from the internet is filtered in Mail Gateway and spam is thrown out before its transferred to an internal mail server.
+
+Characteristics for filtration:
+
+- Allowed list only (only trusted senders)
+- Block anything that doesnt follow RFC standards
+- Reverse DNS - block email where the senders domain doesnt math the IP address of the domain.
+- Tarpitting - intentionally slowing down the mail server - sending and receiving is slow
+- Recipient filtering - block all mail not addressed to a valid recipient email address
+
+## Influence campaign
+
+The goal is to sway public opinion on political and social issues. This is enabled through social media - creating, sharing, liking, etc.
+
+Bad actor creates bad accounts -> create content -> post it on many different platforms -> their messages gets amplified and more people read the content -> real people start sharing it to other people -> mass media picks up the story as it gets popular.
+
+Reasons for these campaigns can even be military aka cyberwarfare. E.g. influencing elections, "fake news".
+
+## Social engineering attacks
+
+Social engineering uses a lot of open source intelligence, using social media and overall information on the internet. E.g. email a funeral notification of a friend or associates.
+
+Main principles:
+
+- Authority - message comes from CEO or help desk
+- Intimidation - bad things will happen if you dont react, give them information, perform an action. "If you dont help me than the payroll checks wont be processed"
+- Consensus/ Social proof - convince based on whats expected or known, using personal information or mentioning people you know.
+- Scarcity - must make the change before time expires, something will go away in a time frame
+- Urgency - act quickly, don't think
+- Familiarity/Liking - mention someone you know, common friends.
+- Trust - the attacker prentends to be someone who is safe, e.g. from IT deparment etc.
+
+### Tailgating
+
+Use an authorized person to gain unauthorized access to a building. Important to prevent as its last line of defence - entrance door.
+
+- People blend in using clothing
+- other legitimate 3d party reasons to enter the building
+- sit in a smoking section and then follow employees inside the building
+- carry food like doughnuts and have their hands full
+
+### Invoice scam
+
+Attacker sends a fake ivoice to the person who takes care of invoicing in the organization. (Attack starts with spear phishing). E.g. invoice for toner cartridges, domain renewal. Invoice if from a spoofed version of the CEO etc.
+
+### Credential Harvesting
+
+Attacker tries to get access to usernames and passwords stored locally on your computer in your browser (Chrome, Firefox, Outlook etc). To extract credentials a script needs to run on your machine.
+To prevent - antivirus, antimalware to scan for these types of attacks.
