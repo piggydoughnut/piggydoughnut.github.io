@@ -1,2 +1,3 @@
 - [Home](/)
 - [Attacks](attacks/index.md)
+- [Malware](malware/index.md)
