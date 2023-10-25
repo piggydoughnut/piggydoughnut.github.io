@@ -127,7 +127,17 @@ Use an authorized person to gain unauthorized access to a building. Important to
 
 Attacker sends a fake ivoice to the person who takes care of invoicing in the organization. (Attack starts with spear phishing). E.g. invoice for toner cartridges, domain renewal. Invoice if from a spoofed version of the CEO etc.
 
-### Credential Harvesting
+## Credential Harvesting
 
 Attacker tries to get access to usernames and passwords stored locally on your computer in your browser (Chrome, Firefox, Outlook etc). To extract credentials a script needs to run on your machine.
 To prevent - antivirus, antimalware to scan for these types of attacks.
+
+## [Logic Bombs](https://youtu.be/javj1IqXKW0)
+
+Type of attack that occurs when a separate event is triggered. Commonly are left by someone with a grudge, ex employee. Difficult to identify as it does not follow any known patterns, no known signatures for anti malware sw. Manby logic bombs delete itself after execution.
+
+Prevention: Formal set of processes and controls for any server environment changes, alerts on changes, host based intrusion prevention. Important to have auditing of alert systems.
+
+## Password attacks
+
+Some apps store passwords in plaintext still. 🤦🏽‍♀️
