@@ -140,4 +140,60 @@ Prevention: Formal set of processes and controls for any server environment chan
 
 ## Password attacks
 
-Some apps store passwords in plaintext still. 🤦🏽‍♀️
+Some apps store passwords in plaintext still. 🤦🏽‍♀️ Hashes FTW. Random salt FTW!
+
+Spraying attack - use common top 3 passwords before moving on.
+
+Brute force - try every possible password combination until the hash is matched.
+
+Dictionary attacks - common words taken from a dictionary to try. e.g. medical dictionary, insurance, etc. Password crackers can substitue letters, e.g. p&ssw0rd. GPU and distributed cracking - quickly performed calculations.
+
+Rainbow table - prebuilt set of hashes, easily searchable
+
+## Physical attacks
+
+### Malicious devices
+
+Malicious USB cable - HID, Human Interface Device like a keyboard
+
+Malicious USB flash drive - can also act as a HID, can have malicious pdf files or macros for spreadsheets, can turn into a wireless interface (host) for outside devices to connect to your machine
+
+### Skimming
+
+Stealing credit card information as the card is used in ATM - magnetic stripe, gathering info from a computer system that it is plugged into. ATM will have a camera or a cardreader.
+
+### Card Cloning
+
+The whole card is cloned with all the details and the magnetic stripe (not chips)
+
+## Supply chain attack
+
+The production chain contains many moving parts - raw materials, suppliers, manufactureres, distributors, customers and consumers.
+
+Attackers infect any step along the way. People tend to trust their suppliers.
+
+Can you trust your new server/router/switch/firewall/software? Supply chain cyber security.
+
+Companies try to use a smaller supplier base with tighter vendor controls, strict policies and procedures.
+
+## Cloud based vs. on-premises attacks
+
+Data is on premises - complete control over everything, you are in charge of the facility, users and support team. You can have on site IT team that can manage security better (can be pricey). No need to reach out to 3d party as all can be done in house.
+
+Cloud based - you decided how much security you want for your data. Your data is accessible to a 3d party at all times. Cloud providers know how to manage large scale security projects. You have to make sure your users follow security procedures when access data. The downtime can be very limited, plus there could be easy add-ons like easy to install firewalls.
+
+## Cryptographic attacks
+
+Birthday attack - There is a classroom of 23 students, what is the chance of two students sharing a birthday? About 50%. 70% with 30 students.
+
+Hash collision - same hash for two different plaintext values. Never happens unless the hash output size is not big enough.
+
+Downgrade attack - force the systems to downgrade the security of encryption for the communication happening between two systems (man in the middle).
+
+SSL 3.0 - insecure, Poodle downgrade attack
+
+## Privilege escalation
+
+Attacker is using normal user access to a system to gain elevated rights on the system using privilege escalation through vulnerability or design flaw.
+
+It is important to patch and update to make sure all is up to date and secure.
