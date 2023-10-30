@@ -126,17 +126,7 @@ To start our enumeration, we should find what databases are available on the DBM
 
 The table ` SCHEMATA` in the `INFORMATION_SCHEMA`database contains information about all databases on the server. The `SCHEMA_NAME` column contains all the database names currently present.
 
-Columns
-
-    CATALOG_NAME: The name of the catalog or data directory where the schema is located. In MySQL, this is typically the same as the schema name and is equal to the database name.
-
-    SCHEMA_NAME: The name of the schema, which corresponds to the name of the database.
-
-    DEFAULT_CHARACTER_SET_NAME: The default character set for the schema.
-
-    DEFAULT_COLLATION_NAME: The default collation for the schema.
-
-    SQL_PATH: The SQL path for the schema, which specifies the directories where stored procedures and functions are located.
+[Schemata columns reference](https://dev.mysql.com/doc/refman/8.0/en/information-schema-schemata-table.html)
 
 List of databases
 
@@ -152,43 +142,7 @@ Before we dump data from the chosen database, we need to get a list of the table
 
 The `TABLES` table in the `INFORMATION_SCHEMA` Database contains information about all tables throughout the database.
 
-Columns
-
-    TABLE_CATALOG: The name of the database or catalog to which the table belongs.
-
-    TABLE_SCHEMA: The name of the schema (i.e., the database) in which the table resides.
-
-    TABLE_NAME: The name of the table.
-
-    TABLE_TYPE: The type of the table, which could be one of the following: 'BASE TABLE' (for regular tables) or 'VIEW' (for views).
-
-    ENGINE: The storage engine used by the table.
-
-    VERSION: The version of the table.
-
-    ROW_FORMAT: The row format used by the table.
-
-    TABLE_ROWS: The number of rows in the table.
-
-    DATA_LENGTH: The length (in bytes) of the data file for the table.
-
-    MAX_DATA_LENGTH: The maximum length (in bytes) of the data file for the table.
-
-    INDEX_LENGTH: The length (in bytes) of the index file for the table.
-
-    DATA_FREE: The amount of free space in the data file (in bytes).
-
-    CREATE_TIME: The timestamp when the table was created.
-
-    UPDATE_TIME: The timestamp when the table was last updated.
-
-    CHECK_TIME: The timestamp when the table was last checked for errors.
-
-    TABLE_COLLATION: The collation used for the table.
-
-    CHECKSUM: The checksum value for the table.
-
-    CREATE_OPTIONS: Additional options specified when creating the table.
+[Tables columns reference](https://dev.mysql.com/doc/refman/8.0/en/information-schema-tables-table.html)
 
 Get tables in the database
 
@@ -198,43 +152,7 @@ Get tables in the database
 
 The `COLUMNS` table in the `INFORMATION_SCHEMA` database contains information about all columns present in all the databases.
 
-    TABLE_CATALOG: The name of the catalog or data directory where the table is located.
-
-    TABLE_SCHEMA: The name of the schema (i.e., database) to which the table belongs.
-
-    TABLE_NAME: The name of the table to which the column belongs.
-
-    COLUMN_NAME: The name of the column.
-
-    ORDINAL_POSITION: The position of the column within the table.
-
-    COLUMN_DEFAULT: The default value for the column.
-
-    IS_NULLABLE: Indicates whether the column allows NULL values ('YES' or 'NO').
-
-    DATA_TYPE: The data type of the column.
-
-    CHARACTER_MAXIMUM_LENGTH: The maximum character length of the column (for character data types).
-
-    CHARACTER_OCTET_LENGTH: The maximum length of the column in bytes (for character data types).
-
-    NUMERIC_PRECISION: The numeric precision for numeric data types.
-
-    NUMERIC_SCALE: The numeric scale for numeric data types.
-
-    CHARACTER_SET_NAME: The character set for character data types.
-
-    COLLATION_NAME: The collation for character data types.
-
-    COLUMN_TYPE: The complete column type, including data type, length, and other attributes.
-
-    COLUMN_KEY: Indicates if the column is part of any key (e.g., 'PRI' for primary key, 'UNI' for unique key, 'MUL' for non-unique key, or an empty string for non-key columns).
-
-    EXTRA: Additional information about the column.
-
-    PRIVILEGES: The privileges associated with the column.
-
-    COLUMN_COMMENT: Any comments associated with the column.
+[Columns columns reference](https://dev.mysql.com/doc/refman/8.0/en/information-schema-columns-table.html)
 
 List of columns in a table
 
@@ -263,49 +181,7 @@ In the ` INFORMATION_SCHEMA` database, the `USER_PRIVILEGES` table contains info
     PRIVILEGE_TYPE: The type of privilege, such as SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, and more.
     IS_GRANTABLE: Indicates whether the privilege is grantable to other users (YES or NO).
 
-Mysql Privilege types
-
-    SELECT: Allows the user to read data from tables and views.
-
-    INSERT: Allows the user to add new rows of data into tables.
-
-    UPDATE: Allows the user to modify existing data in tables.
-
-    DELETE: Allows the user to remove rows from tables.
-
-    CREATE: Allows the user to create new databases, tables, or indexes.
-
-    DROP: Allows the user to delete databases, tables, or indexes.
-
-    ALTER: Allows the user to modify the structure of existing tables.
-
-    GRANT OPTION: Allows the user to grant privileges to other users.
-
-    EXECUTE: Allows the user to execute stored procedures or functions.
-
-    SHOW VIEW: Allows the user to show the CREATE VIEW statement for a view.
-
-    INDEX: Allows the user to create or drop indexes.
-
-    REFERENCES: Allows the user to create foreign keys.
-
-    CREATE TEMPORARY TABLES: Allows the user to create temporary tables.
-
-    LOCK TABLES: Allows the user to lock tables for the current thread.
-
-    CREATE ROUTINE: Allows the user to create stored procedures and functions.
-
-    ALTER ROUTINE: Allows the user to alter stored procedures and functions.
-
-    EVENT: Allows the user to create, alter, or drop events.
-
-    TRIGGER: Allows the user to create, alter, or drop triggers.
-
-    CREATE VIEW: Allows the user to create views.
-
-    SHOW DATABASES: Allows the user to see a list of available databases.
-
-    SUPER: Provides administrative privileges, such as shutting down the server or killing threads.
+[Mysql Privilege reference](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html)
 
 ##### DB user
 
