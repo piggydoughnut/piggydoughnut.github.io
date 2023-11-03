@@ -1,4 +1,5 @@
 - [Home](/)
+- [SY0701](sy0701/index.md)
 - [Attacks](attacks/index.md)
 - [Malware](malware/index.md)
 - [HTB](htb/index.md)
