@@ -84,3 +84,60 @@ Digital signature - public/private key cryptography.
 6. Bob checks if the received hash matches the hash of the content he received.
 
 ## AAA - Auhtorization Authentication Accounting
+
+Authentication - who are you? Password and authentication factors.
+
+Authorization - what access do you have? Decided based on your identification and authentication.
+
+Accounting - login time, data sent and received, logout time
+
+How can you verify if the computer on your network is authorized to be on your network? How can you truly authenticated a device?
+
+- Digitally signed certificate on a device
+- Other business processes rely on that certificate - e.g. Access to the VPN from authorized devices
+
+Certificate Authority (CA)
+
+- The organization creates a certificate for a device and digitally signs the cerificate with the organization's CA. The CA's digital signature is used to validate the certificate.
+
+### Authorization models
+
+- Define roles, organizations, attributes to decide who and when can access data
+- Abstraction - clear relationship between the user and the resource
+
+## Gap Analysis
+
+- A study of where we are and where we would like to be
+- Work towards a known baseline
+  - NIST Special Publication 800-171 Revision 2
+  - ISO/IEC 270001
+- Baselines involve analysis of the people and processes used for security
+- Examine the current IT systems
+- Comparison of the existing systems of the current systems - find weakensess
+- End result is a document (gap analysis report) with clear view of the current state and the security goals, recommendation for meeting the baseline
+
+## [Zero Trust](https://www.youtube.com/watch?v=zC_Pndpg8-c)
+
+- Many networks are relatively open on the inside, once you are through the firewall, there are a few security controls
+- Everything is subject to a security check
+
+### Planes of the operation
+
+- Split netwrok into functional planes - applies to physical, virtual, and cloud components.
+
+Data plane - processing frames, packets, network data
+Control plane - manage the actions of the data plane, define policies and rules, determine how packets should be forwarded
+
+Adaptive identity - examining identity of an individual applying security controls based on information that we are gathering about this authentication process. E.g. source of the requested resources - where is the IP address located. Limit entry points to access the network.
+
+Policy drive access control - combine adaptive identity with a predefined set of rules.
+
+### Security zones
+
+Where are you coming from and where are you going. Internal, external network, VPN, Marketing, IT, Accounting, etc.
+
+Implicitly trusted zomes - trusted to internal zone traffic
+
+**Policy enforcement point** - subjects and systems communicating through this point are subject to evaluation by the policy enforcement point. Gatekeeper. All of the traffic passing through network passes through PEP. Allow, monitor and terminate connections. Gathers all of the information and provides it to Policy Decision Poiunt
+
+**Policy Decision Point** - examines requests, compares to a predefined security policy, then makes a decision if it is allowed or denined.
