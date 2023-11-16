@@ -58,3 +58,115 @@ SSL VPN
 - A wireless personal area network that is established via Bluetooth is called Piconet
 - PANs and WPANs usually extend only a few meters and are therefore not suitable for connecting devices in separate rooms or even buildings.
 - In the context of the Internet of Things (IoT), WPANs are used to communicate control and monitor applications with low data rates. Protocols such as Insteon, Z-Wave, and ZigBee were explicitly designed for smart homes and home automation.
+
+## Networking topologies
+
+Physical or logical connection of devices in a network. Include network components such as switches, bridges and routers.
+
+### Connections
+
+Wired connections: Coaxial cabling, glass fiber cabling, twisted pair cabling
+Wireless connections: Wi-Fi, Cellular, Satelite
+
+### Nodes - Network Interface Controller (NICs)
+
+Network nodes are the transmission medium's connection points to transmitters and receivers of electrical, optical, or radio signals in the medium.
+
+Repeaters
+Hubs
+Bridges
+Switches
+Router/Modem
+Gateways
+Firewalls
+
+### Classifications
+
+We can imagine a topology as a virtual form or structure of a network. This form does not necessarily correspond to the actual physical arrangement of the devices in the network. Therefore these topologies can be either physical or logical. For example, the computers on a LAN may be arranged in a circle in a bedroom, but it is very unlikely to have an actual ring topology.
+
+#### Point-to-Point
+
+Connection between two hosts - physical link. Point-to-poin are the beasic model of traditional telephony and must not be confused with Peer-to-Peer architecture.
+
+![point to point](./networking/topo_p2p.png "Point to Point")
+
+#### Bus
+
+All hosts are connected via a tramission medium in the bus topology. Every host has access to the transmission medium and the signals that are transmitted over it. Transmission medium can be a e.g. coaxial cable.
+
+Since the medium is shared with all the others, only one host can send, and all the others can only receive and evaluate the data and see whether it is intended for itself.
+
+![bus](./networking/topo_bus.png "Bus")
+
+#### Star
+
+Each host is connected to the central network component via a separate link. This is usually a router, hub or a switch. These handle forwarding function for the data packets.
+
+![star](./networking/topo_star.png "Star")
+
+#### Ring
+
+The physical ring topology is such that each host or node is connected to the ring with two cables:
+
+- one for the incoming signals
+- one for the outgoing signals
+
+The ring topology does not require and active network component. The control and access to the transmission medium are regulated by a protocol to which all stations adhere.
+
+The informations is transmitted in a predetermined transmission direction. Typically, the transmissin medium is accessed sequentially from station to station using a retrieval system from the central station or a token.
+
+A token is a bit pattern that continually passes through a ring network in one direction, which works according to the claim token process.
+
+![ring](./networking/topo_ring.png "Ring")
+
+#### Mesh
+
+Many nodes decided about the connections on a physical level and the routing on a logical level in meshed networks. No fixed topology.
+
+![Mesh](./networking/topo_mesh.png "Mesh")
+
+**Fully meshed**
+
+Each host is connected to every other host in the network in a fully meshed structure. Hosts are meshed with each other. Used in WAN or MAn to ensure high reliability and bandwitdth.
+
+Routers can be networked together in case of one failure others can continue working.
+
+Each node has the same routing functions and knows the neighbouring nodes it can communicate with proximity to the network gateway and traffic loads.
+
+**Partially meshed**
+
+The edpoints are connected by only one connection. Specific nodes are connected to exactly one other node, and some other nodes are connected to two or more other nodes with point-to-point connection.
+
+![FullPartMesh](./networking/fullVSpart.png "FullPartMesh")
+
+#### Tree
+
+Used in larger company buildings, extended start topology.
+
+There are both logical and physical tree structures. Modular modern networks, based on structured cabling with a hub hierarchy, also have a tree structure.
+
+Tree topologies are also used for broadband networks and city networks (MAN).
+
+![Tree](./networking/topo_tree.png "Tree")
+
+#### Hybrid
+
+Combine two or more topologies that the resulting network does not present any standard topologies.
+
+E.g. tree network can represent a hybrid topology in which star networks are connected via interconnected bus networks.
+
+A tree network linked to another tree network is still topologically a tree network.
+
+A hybrid topology is always created when two different basic network topologies are interconnected.
+
+![Hybrid](./networking/topo_hybrid.png "Hybrid")
+
+#### Daisy Chain
+
+Multiple hosts are connected by placing a cable from one node to another. This creates a chain of connections, multiple hardware components are connected in a series.
+
+Often used for automation technology - CAN.
+
+Daisy chaining is based on a physical arrangements of nodes, in contrast to token procedures, which are structural but can be made independent of the physical layout. The signal is sent to and from a component via its previous nodes to the computer system.
+
+![Daisy](./networking/topo_daisy-chain.png "Daisy")
