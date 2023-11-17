@@ -170,3 +170,116 @@ Often used for automation technology - CAN.
 Daisy chaining is based on a physical arrangements of nodes, in contrast to token procedures, which are structural but can be made independent of the physical layout. The signal is sent to and from a component via its previous nodes to the computer system.
 
 ![Daisy](./networking/topo_daisy-chain.png "Daisy")
+
+## Proxies
+
+Proxy is when a device or service sits in the miffle of a connection and acts as a mediator (must be able to inspect the contents of the traffic). Without the ability to be a mediator, the device is technically a gateway, not a proxy.
+
+Proxies operate at Layer 7 of the OSI Model.
+
+### Dedicated Proxy / Forward Proxy
+
+Forward Proxy is when a client makes a request to a computer, and that computer carries out the request.
+
+The malware has to be proxy aware in order to cause harm when a proxy is in use.
+
+Firefox uses `libcurl`, which means the malware would have to look for Firefox and pull the proxy settings, which malware is highly unlikely to do.
+
+Burp Suite - forwards HTTP Requests, can be configured to be a reverse proxy or transparent.
+
+![Forward Proxy](./networking/forward_proxy.png "Forward Proxy")
+
+### Reverse Proxy
+
+Reverse proxy is the reverse of a Forward Proxy, it filters incoming requests. The most common goal is to listen on an address and forward it to a closed-off network.
+
+**CloudFlare** - many organizations use it as they have a robust network that can withstand DDOS attacks. Cloudflare provides organizations with an ability to filter traffic that gets sent to their webservers.
+
+**Intrusion Detection Systems** - watches external web requests in organization.
+
+Penetration testers use reverse proxies on compromised endpoints to redirect and hide their activities, especially when gaining access via SSH, to bypass firewalls and evade detection by IDS that may be monitoring external web requests.
+
+**ModSecurity** - another common reverse proxy.
+
+**Web Application Firewall (WAF)** - inspect web requests for malicious content and block the request if it is malicious. Cloudflare can act as a WAF but doing so requires letting them decrypt HTTPS traffic.
+
+![Reverse Proxy](./networking/reverse_proxy.png "Reverse Proxy")
+
+### (Non) Transparent Proxy
+
+All the proxies act either transparently or non transparently.
+
+**Transparent proxy**
+
+- client doesn't know about it's existence
+- intercepts the client's communication requests to the Internet and acts as a substitute instance
+- to the outside, acts as a communication pattern
+
+**Non transparent proxy**
+
+- we must be informed about its existence
+- we and the software we want to use are given a special proxy configuration that ensures that traffic to the Internet is first addressed to the proxy. If this configuration does not exist, we cannot communicate via the proxy.
+
+## Networking Models
+
+![OSI Model](./networking/net_models4.png "OSI Model")
+
+## The ISO/OSI Model
+
+- Open Systems Interconnections
+- International Organization for Standardization
+- reference model that can be used to describe and define communication between systems
+
+## The TCP/IP Model
+
+- Transmission Control Protocol
+- Internet Protocol
+- Internet is entirely based on the TCP/IP protocol family
+- ICMP - Internet Control Message Protocol
+- UDP - User Datagram Protocol
+
+**ISO/OSI vs TCP/IP**
+
+TCP/IP is a communication protocol that allows hosts to connect to the Internet.
+
+OSI is a communication gateway between the network and end-users. The OSI model is a reference model because it is newer and more widely used, strict protocol and limitations.
+
+## Packet Transfers
+
+**PDU** - protocol data unit.
+
+Browse a website on the computer.
+
+1. Request Processing:
+   The computer sends a request to a remote server to browse a website.
+
+2. Application Layer:
+   The remote server's software processes the request at the application layer, handling specific functions.
+
+3. Layer-by-Layer Processing:
+   The data is processed layer by layer, each layer performing its designated tasks.
+
+4. Network's Physical Layer:
+   The processed data is then transferred through the physical layer of the network.
+
+5. Data Reception:
+   The destination server or another device receives the data.
+
+6. Layered Routing Back:
+   The received data is routed back through the layers, with each layer performing its assigned operations.
+
+7. Final Processing:
+   The data is processed until it reaches the application layer again.
+
+8. Data Utilization:
+   The receiving software uses the processed data for displaying the website content.
+
+**Encapsulation** - During the transmission, each layer adds a header to the PDU from the upper layer, which controls and identifies the packet. The process continues to the Physical Layer or Network Layer, where the data is transmitted to the receiver. The receiver reverses the process and unpacks the data on each layer with the header information. After that, the application finally uses the data. This process continues until all data has been sent and received.
+
+![Packet transfers](./networking/packet_transfer.png "Packet transfers")
+
+Ethernet - defines a set of standards for how devices in a local are network (LAN) communicate with each other.
+
+With TCP/IP we can quickly understand how the entire connection is established. With ISO we can take it apart and analyze it in detail.
+
+## The OSI Model

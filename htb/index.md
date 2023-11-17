@@ -1,2 +1,2 @@
-- [SQLi](/htb/sqli.md)
-- [Networking](/htb/networking.md)
+- [SQLi](htb/sqli.md)
+- [Networking](htb/networking.md)
