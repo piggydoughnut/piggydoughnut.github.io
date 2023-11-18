@@ -332,3 +332,54 @@ Example: Ensuring compatibility between different systems' data representations.
 
 Task: Controlling input and output of data and providing application functions.
 Example: Managing user interfaces, file transfers, and other application-level interactions.
+
+## TCP/IP Model
+
+- layered reference model, often referred to as the Internet Protocol Suite.
+- TCP, Transmission Control Protocol, transport layer, ensures the connection between data stream and application.
+- IP, Internet Protocol, is located within the network layer, ensures that the packet reaches its destination.
+
+### 1. Link Layer
+
+- reponsible for placing TCP/IP packets on the network medium and receiving correspondnig packets from the network medium
+- TCP/IP is designed to work independently of the network access method, frame format, and medium
+
+### 2. Internet
+
+- responsible for host addressing, packaging and routing functions
+
+### 3. Transport
+
+- provides TCP session and UDP datagram services for the Application Layer
+
+### 4. Application
+
+- allows applications to access the other layers and defined the protocols applications use to exchange data
+
+### IP
+
+**Logical addressing**
+
+- network classes, subnetting, CIDR
+- many hosts in different network -> need to structure the network topology
+
+**Routing**
+
+- for each data packet, the next node is determined in each node on the way from the sender to receiver
+- this way the data packet can be routed to the receiver even if its location is unkown to the sender
+
+### TCP
+
+**Error and Control Flow**
+
+- control messages are sent continuously to check if the connection is still established between the sender and receiver
+
+**Application support**
+
+- TCP and UDP ports form a software abstraction to distinguish specific applications and their communication links.
+
+### DNS
+
+**Name resolution**
+
+- DNS provides name resolution through FQDN in IP addresses
