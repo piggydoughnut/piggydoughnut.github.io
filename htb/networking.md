@@ -283,3 +283,52 @@ Ethernet - defines a set of standards for how devices in a local are network (LA
 With TCP/IP we can quickly understand how the entire connection is established. With ISO we can take it apart and analyze it in detail.
 
 ## The OSI Model
+
+### Physical Layer (Layer 1):
+
+Task: Transmission of data using techniques like electrical signals, optical signals, or electromagnetic waves.
+Example: Sending data over wired or wireless transmission lines.
+
+### Data Link Layer (Layer 2):
+
+Task: Ensuring reliable and error-free transmissions by dividing bitstreams into blocks or frames.
+Example: Managing data transmission on a specific medium.
+
+### Network Layer (Layer 3):
+
+Task: Establishing connections in circuit-switched networks and forwarding data packets in packet-switched networks.
+Example: Routing data from sender to receiver across the entire network.
+Responsibilities:
+
+- Establishing connections in circuit-switched networks.
+- Forwarding data packets in packet-switched networks.
+- Handling logical addressing (IP addresses).
+
+Example: The Internet Protocol (IP) operates at the network layer, determining the logical addressing and routing of packets between different networks.
+
+### Transport Layer (Layer 4):
+
+Task: Controlling end-to-end data transfer, detecting and avoiding congestion situations, and segmenting data streams.
+Example: Ensuring reliable delivery and managing data flow. Works with port numbers to distinguish different communication channels between applications.
+Responsibilities:
+
+- Segmenting and reassembling data.
+- Detecting and recovering from errors.
+- Managing flow control and congestion.
+
+Examples: Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) operate at the transport layer. TCP ensures reliable data delivery with error checking and retransmission, while UDP provides a connectionless and faster delivery option without guaranteed reliability.
+
+### Session Layer (Layer 5):
+
+Task: Controlling logical connections between two systems to prevent connection breakdowns or other problems.
+Example: Managing and maintaining sessions between devices.
+
+### Presentation Layer (Layer 6):
+
+Task: Transferring system-dependent data presentations into a form independent of the application.
+Example: Ensuring compatibility between different systems' data representations.
+
+### Application Layer (Layer 7):
+
+Task: Controlling input and output of data and providing application functions.
+Example: Managing user interfaces, file transfers, and other application-level interactions.
