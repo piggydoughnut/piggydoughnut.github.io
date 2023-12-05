@@ -359,8 +359,67 @@ Changes affecting legacy applications are tricky. They are usually not supported
 
 ## Public key infrastructure (PKI)
 
-### Public key
+- policies, procedures, hw, sw, people
+- binding of public keys to people or devices. The certificate authority does that. It's all about trust, wheter you can trust the particular person or device
 
-### Private key
+e.g. Digital cerificates - create, disribute, manage, store, revoke
+
+### Symmetric encryption
+
+A single, shared key to encrypt/decrypt.
+A secret key algorithm, a shared secret.
+
+Symmetric is used a lot - less overhead than assymetric encryption, very fast.
+
+### Assymetric encryption
+
+Public key cryptography, two or more mathematically related keys
+Private and Public keys.
+
+The private key is the only key that can decrypt the data. Anyone can access the public key and decrypt the data using it. Only the corresponding private key can decrypt it.
+
+You can't derive private key from public key.
 
 ### Key escrow
+
+- your PKs are in the hands of a 3d party
+- government agencies may need to decrypt partner data
+
+## Encryption
+
+Protect data on storage devices, such as SSD, hard drive, USB drive, cloud storage, etc
+
+**Full-disk** and **Partition/volume** encryption - BitLocker, FileVault
+
+**File** - EFS (Encrypting File System)
+
+**Database**
+
+- Transparent encyption using symmetric key
+- record level encryption - encrypt only certain columns, e.g. social security number
+
+**Transport/communication - Asymmetric**
+
+- protecting data sent over the network
+- HTTPS - browser
+- VPN - encrypts all data transmitted over the network, encrypted tunnel, client based using SSL/TLS, Site-to-Site VPN using IPsec
+
+### Algorithms
+
+Publicly accessible algorithm/code for everyone to review. Can verify but cannot do anything since we do not know the cryptographic key.
+
+DES - Data Encryption Standard
+
+AES - Advanced Encryption Standard
+
+### Key length
+
+- Larger keys tend to be more secure, hard to bruteforce
+- symmetric enc - 128bit or larger symmetric keys are common
+- assymetric enc keys - 3072 bits or more
+
+**key stretching** or **key strengthening**
+
+- Make a weak key stronger by performing multiple processes
+- hash the same password many many times
+- Brute force attack would require reversing each of those hashes, the attacker will spend more time even though the key is small
