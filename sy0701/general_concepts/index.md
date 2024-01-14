@@ -83,7 +83,7 @@ Digital signature - public/private key cryptography.
 5. Bob uses Alice's public key to decrypt the Hash (Digital signature) he received. He obtains the hash of the content in the process.
 6. Bob checks if the received hash matches the hash of the content he received.
 
-## AAA - Auhtorization Authentication Accounting
+## [AAA - Auhtorization Authentication Accounting](https://youtu.be/AhaZtj5P2a8?feature=shared)
 
 Authentication - who are you? Password and authentication factors.
 
@@ -105,7 +105,7 @@ Certificate Authority (CA)
 - Define roles, organizations, attributes to decide who and when can access data
 - Abstraction - clear relationship between the user and the resource
 
-## Gap Analysis
+## [Gap Analysis](https://youtu.be/cuTVyyS5C7M?feature=shared)
 
 - A study of where we are and where we would like to be
 - Work towards a known baseline
@@ -142,7 +142,7 @@ Implicitly trusted zomes - trusted to internal zone traffic
 
 **Policy Decision Point** - examines requests, compares to a predefined security policy, then makes a decision if it is allowed or denined.
 
-## Physical secucity
+## [Physical security](https://youtu.be/YtT8q2mUM9c?feature=shared)
 
 ### Bollards/Barricades
 
@@ -198,7 +198,7 @@ Types:
 - Microwave - detect movement over large areas
 - Ultrasonic - sends ultrasonice signals, receive reflected sound waves, detects motion, collision detection
 
-## Deception and disruption technology
+## [Deception and disruption technology](https://youtu.be/X_qfMVty4ts?feature=shared)
 
 ### Honeypot
 
@@ -228,7 +228,7 @@ E.g.
 - A file with fake email addresses - constantly monitor to see who posts these addresses on the internet, then you can have an idea who is attacking you
 - any type of data that you can falsify and put in an area for an attacker to find - database records, browser cookies, web page pixels
 
-## Change management
+## [Change management](https://youtu.be/48wRbMdHFVI?feature=shared)
 
 How to make a change. Changes in corporations have to follow a formal process in order to make sure the change is performed properly as many people can be affected by it.
 
@@ -308,7 +308,7 @@ What is the risk of NOT making the change?
 
 - change control process has to be well documented and available to everyone in the organization through the intranet
 
-## Technical change management
+## [Technical change management](https://youtu.be/H9TYNjcpl-0?feature=shared)
 
 There is no such thing as a simple upgrade
 
@@ -357,7 +357,7 @@ Changes affecting legacy applications are tricky. They are usually not supported
 
 - many popportunities to manage versions: router configurations, windows OS patches, application registry entities
 
-## Public key infrastructure (PKI)
+## [Public key infrastructure (PKI)](https://youtu.be/xHAMEF7-inQ?feature=shared)
 
 - policies, procedures, hw, sw, people
 - binding of public keys to people or devices. The certificate authority does that. It's all about trust, wheter you can trust the particular person or device
@@ -385,7 +385,7 @@ You can't derive private key from public key.
 - your PKs are in the hands of a 3d party
 - government agencies may need to decrypt partner data
 
-## Encryption
+## [Encryption](https://youtu.be/jpsc4c7lntw?feature=shared)
 
 Protect data on storage devices, such as SSD, hard drive, USB drive, cloud storage, etc
 
@@ -423,3 +423,182 @@ AES - Advanced Encryption Standard
 - Make a weak key stronger by performing multiple processes
 - hash the same password many many times
 - Brute force attack would require reversing each of those hashes, the attacker will spend more time even though the key is small
+
+## [Key Exchange](https://youtu.be/U6BWn81P5Ec?feature=shared)
+
+Main issue using symmetric encryption is getting the key from one party to another - logistical challenge.
+
+**Exchange key out-of-band** - telephone, courier, in person - lengthy
+
+**In-band key exhange** - assymetric encryption to encrypt a symmetric key, send to a 3d party, they can decrypt it.
+
+Share a symmetric Session key using assymetric encryption
+
+- client encrypts a random symmetric key with a servers public key.
+- the server decrypts this shared key and uses it to encrypt data
+- that is the session key, need to be changed often
+
+Public key cryptography
+
+- combine A's Private Key and B's Public Key = symmetric key
+
+## [Encryption Technologies](https://youtu.be/u61J0xR_XPU?feature=shared)
+
+**TPM**
+
+- Trusted Platform Module
+- cryptography hardware on a device, cryptographic processor
+- persistent memory - unique keys burned in during manufacturing
+- versatile memory - storage keys, hw conf information
+- passwd protected - no dictionary attacks or brute force to access info on a TPM
+- provides encryption function to a device
+
+**HSM**
+
+- Hardware Security Module
+- used in large environments
+- clustered together for redundancy
+- securely stores thousands of cryptographic keys.
+- plug-in card or separate hw, that can connect to hsm, that is design to perform very fast crypto functions
+- store sensitive keys on an HSM
+- crypto accelerators - very fast performance
+
+**Key Management system**
+
+- on-premises or cloud based
+- manage keys from a centralized manager
+- log keys and important events
+- certificate authorities, lincences expirations etc
+
+**Secure enclave**
+
+- often implemented as a hw processor, dedicated to data privacy
+- isolated from the main processor
+- its own boot ROM, monitors the system boot process, true random number generator, real time encryption, root cryptographic keys, performs AES enc in the hardware, etc
+
+## [Obfuscation](https://youtu.be/LfuTMzZke4g?feature=shared)
+
+- the process of making something unclear - much more difficult to understand
+- if you know how its done, you can reverse the process
+- information is hidden in plain sight
+
+**Steganography**
+
+- hide information within an image
+- security through obscurity
+- "concealed writing"
+- the covertext - document that contains the data that you are hiding
+
+Network based steganography
+
+- embed messages in TCP packest
+
+Image steganography
+
+- yellows dots on printers - invisible watermarks
+
+Audio steganography
+
+- modify the digital audio file
+
+Video steganography
+
+**Tokenization**
+
+- Replace sensitive data with a non sensitive placeholder
+- credit card processing - temp token created during payment
+
+**Data masking**
+
+- data obfuscation - hide some of the original data
+- protect sensitive data
+- different ways of masking data - substituting, shuffling, etc
+
+## [Hashing and Digital Signatures](https://youtu.be/EcGmQjl6XEo?feature=shared)
+
+Hash
+
+- represents data as a short string of text, fingerprint, message digest
+- verify a downloaded document is the same as the original - integrity
+- password storage - instead of storing plaintext, store a salted hash
+- salt is a random information added to the password when hashing. Every user gets their own random salt, that is commonly stored with the password.
+
+Rainbow table - all possible inputs + hashes associated with those inputs.
+
+SHA256 hash algorithm
+
+- 256 bits/64 hexacidecimal characters
+
+Collision
+
+- hash has to be unique
+- different inputs have to give different outputs if not then it is a collision
+
+Digital signature
+
+- authentication - prove the source of the message
+- non repudiation - make sure the signature isnt fake
+- integrity - prove the message was not changed
+- sign the DG with a private key, the receiving party can validate the DG with a public key of the user who encrypted the DG
+
+## [Blockchain Technology](https://youtu.be/-wqU_2ToP1M?feature=shared)
+
+## [Digital certificates](https://youtu.be/cLa94BZH_9s?feature=shared)
+
+A public key certificate
+
+- binds with a public key with a digital signature
+- other details about the key holder
+
+Digital certificate adds trust.
+Certificate authorities for additional trust.
+Web of Trust adds other users for additional trust.
+
+Certificate details
+
+- X.509 standard format
+- Serial number, version, signature algorithm, issuer, holder name, public key, extensions
+
+**Root of trust** - inherently trusted component.
+
+**Certificate Authorities** - signs the website certificate, you trust CA, therfore you trust the website.
+
+A list of trusted CAs is built in the browser.
+
+Certificate signing requests
+
+- Create a key pair
+- Send as CSR, contains applicant identifying
+- CA validate the applicants' identity
+- CA digitallt signs certificate and sends it back to you
+
+Private certificate authorities
+
+- internal in organization
+- everyone's machine in the company will have to trust our ceritifacte authority
+- Windows Certificate Services, OpenCA
+
+Self-signed certificates
+
+- you company is the only one going to use certificates
+
+Wildcard certificates
+
+- subject alternative name
+- extension to an X.509 certificate
+- allows you to put a name of the domain with an asteriks asociated with the name of the device
+- certificate we created can be used for any device that happens to share that fully qualified domain name
+- a wildcard domain will apply to all server names in a domain
+- easy to create one certificate and distribute to a large number of servies in the organization
+
+Key revocation
+
+- Certificate Revocation List, CRL
+- list of all certs that have been revoked
+
+OCSP Stapling
+
+- Online Certificate Status Protocol - provides scalability for OCSP checks
+- have the certificate holder verify their own status
+- OCSP status is stapled into the SSL/TLS handshake, digitally signed by the CA
+- most browsers support this protocol
