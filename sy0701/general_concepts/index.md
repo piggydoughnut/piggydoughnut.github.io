@@ -456,6 +456,7 @@ Public key cryptography
 **HSM**
 
 - Hardware Security Module
+- primary function - generate and store RSA encryption keys, providing hardware based encryption
 - used in large environments
 - clustered together for redundancy
 - securely stores thousands of cryptographic keys.
@@ -545,7 +546,7 @@ Digital signature
 
 ## [Digital certificates](https://youtu.be/cLa94BZH_9s?feature=shared)
 
-A public key certificate
+**A public key certificate**
 
 - binds with a public key with a digital signature
 - other details about the key holder
@@ -554,7 +555,7 @@ Digital certificate adds trust.
 Certificate authorities for additional trust.
 Web of Trust adds other users for additional trust.
 
-Certificate details
+**Certificate details**
 
 - X.509 standard format
 - Serial number, version, signature algorithm, issuer, holder name, public key, extensions
@@ -565,24 +566,24 @@ Certificate details
 
 A list of trusted CAs is built in the browser.
 
-Certificate signing requests
+**Certificate signing requests**
 
 - Create a key pair
 - Send as CSR, contains applicant identifying
 - CA validate the applicants' identity
 - CA digitallt signs certificate and sends it back to you
 
-Private certificate authorities
+**Private certificate authorities**
 
 - internal in organization
 - everyone's machine in the company will have to trust our ceritifacte authority
 - Windows Certificate Services, OpenCA
 
-Self-signed certificates
+**Self-signed certificates**
 
 - you company is the only one going to use certificates
 
-Wildcard certificates
+**Wildcard certificates**
 
 - subject alternative name
 - extension to an X.509 certificate
@@ -591,12 +592,12 @@ Wildcard certificates
 - a wildcard domain will apply to all server names in a domain
 - easy to create one certificate and distribute to a large number of servies in the organization
 
-Key revocation
+**Key revocation**
 
 - Certificate Revocation List, CRL
 - list of all certs that have been revoked
 
-OCSP Stapling
+**OCSP Stapling**
 
 - Online Certificate Status Protocol - provides scalability for OCSP checks
 - have the certificate holder verify their own status
